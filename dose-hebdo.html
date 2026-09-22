@@ -1,0 +1,1824 @@
+<title>My skills challenge</title>
+<style>
+  :root {
+    --paper: #F4F8F7;
+    --surface: #FFFFFF;
+    --ink: #0B1524;
+    --ink-soft: #4B5B66;
+    --blue-700: #0B2340;
+    --blue-500: #1B3A5C;
+    --blue-100: #E1E8F0;
+    --green-600: #00695C;
+    --green-100: #D9F0EC;
+    --coral-500: #D14B3D;
+    --coral-100: #FBE1DE;
+    --amber-500: #C79A3D;
+    --amber-100: #F5E9CF;
+    --series5: #6B5CA5;
+    --lvl0: #C7402F;
+    --lvl1: #C97C1E;
+    --lvl2: #5C9650;
+    --lvl3: #2C6B3F;
+    --border: #DCE6E3;
+    --shadow: 0 20px 50px -20px rgba(11, 35, 64, 0.35);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #071019;
+      --surface: #10202F;
+      --ink: #EAF1F0;
+      --ink-soft: #9FB4B0;
+      --blue-700: #6FA8DC;
+      --blue-500: #4A86C8;
+      --blue-100: #1B2E42;
+      --green-600: #3FCBB0;
+      --green-100: #123530;
+      --coral-500: #F1786A;
+      --coral-100: #3A1F1C;
+      --amber-500: #E0B563;
+      --amber-100: #3A2E17;
+      --series5: #A996E0;
+      --lvl0: #E8695C;
+      --lvl1: #E0A34A;
+      --lvl2: #7FBF6B;
+      --lvl3: #4CA868;
+      --border: #22343F;
+      --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #071019;
+    --surface: #10202F;
+    --ink: #EAF1F0;
+    --ink-soft: #9FB4B0;
+    --blue-700: #6FA8DC;
+    --blue-500: #4A86C8;
+    --blue-100: #1B2E42;
+    --green-600: #3FCBB0;
+    --green-100: #123530;
+    --coral-500: #F1786A;
+    --coral-100: #3A1F1C;
+    --amber-500: #E0B563;
+    --amber-100: #3A2E17;
+    --series5: #A996E0;
+    --lvl0: #E8695C;
+    --lvl1: #E0A34A;
+    --lvl2: #7FBF6B;
+    --lvl3: #4CA868;
+    --border: #22343F;
+    --shadow: 0 20px 50px -20px rgba(0, 0, 0, 0.6);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    min-height: 100%;
+    display: flex;
+    justify-content: center;
+    padding-inline: 16px;
+    padding-block: 28px;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .display {
+    font-family: 'Sora', 'Inter', sans-serif;
+    text-wrap: balance;
+  }
+
+  .app {
+    width: 100%;
+    max-width: 440px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+  }
+
+  /* ---------- Top bar ---------- */
+  .topbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--blue-500), var(--green-600));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 15px;
+    flex-shrink: 0;
+  }
+  .brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.15;
+  }
+  .brand-text strong {
+    font-family: 'Sora', sans-serif;
+    font-size: 15px;
+  }
+  .brand-text span {
+    font-size: 12px;
+    color: var(--ink-soft);
+  }
+  /* ---------- Mode switch ---------- */
+  .mode-switch {
+    display: flex;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 4px;
+    gap: 4px;
+  }
+  .mode-btn {
+    flex: 1;
+    font-family: 'Sora', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    border: none;
+    background: transparent;
+    color: var(--ink-soft);
+    padding: 9px 6px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .mode-btn.active {
+    background: var(--ink);
+    color: var(--paper);
+  }
+  .mode-btn:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 2px; }
+
+  /* ---------- Sub-tabs (manager) ---------- */
+  .sub-tabs {
+    display: flex;
+    gap: 18px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sub-tab {
+    font-family: 'Sora', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    background: none;
+    border: none;
+    padding: 8px 2px 10px;
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -1px;
+  }
+  .sub-tab.active { color: var(--ink); border-bottom-color: var(--blue-500); }
+  .sub-tab:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 2px; }
+
+  /* ---------- Owner: fleet legend + regatta tracks ---------- */
+  .legend-row { display: flex; flex-wrap: wrap; gap: 8px 14px; }
+  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 11.5px; color: var(--ink-soft); }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+  .regatta-block { display: flex; flex-direction: column; gap: 4px; }
+  .regatta-head { display: flex; align-items: center; gap: 8px; }
+  .regatta-head svg { width: 15px; height: 15px; color: var(--blue-700); flex-shrink: 0; }
+  .regatta-head strong { font-size: 13px; }
+
+  .regatta-track-wrap { position: relative; padding-inline: 14px; }
+  .regatta-boats { position: relative; height: 24px; }
+  .regatta-boat { position: absolute; bottom: 0; transform: translateX(-50%); color: var(--ink-soft); }
+  .regatta-boat svg { display: block; width: 100%; height: 100%; }
+  .regatta-line { position: relative; height: 2px; background: var(--border); border-radius: 2px; margin: 5px 0; }
+  .regatta-tick { position: absolute; top: -3px; width: 2px; height: 8px; background: var(--border); transform: translateX(-50%); }
+  .regatta-buoy-layer { position: relative; height: 34px; }
+  .regatta-buoy {
+    position: absolute;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 8px;
+    font-weight: 700;
+    color: #fff;
+    border: 2px solid var(--surface);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+  }
+  .regatta-levels { display: flex; justify-content: space-between; font-size: 9.5px; color: var(--ink-soft); }
+
+  /* ---------- Progress ---------- */
+  .progress-row {
+    display: flex;
+    gap: 6px;
+  }
+  .progress-seg {
+    flex: 1;
+    height: 6px;
+    border-radius: 999px;
+    background: var(--border);
+    overflow: hidden;
+  }
+  .progress-seg > i {
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--blue-500), var(--green-600));
+    transition: width 0.5s ease;
+  }
+
+  /* ---------- Card stack ---------- */
+  .stage {
+    position: relative;
+    min-height: 430px;
+  }
+  .card {
+    position: absolute;
+    inset: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 22px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    opacity: 0;
+    transform: translateY(14px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+  .card.active {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+  .card.shake { animation: shake 0.4s ease; }
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  .theme-pill {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    padding: 6px 12px;
+    border-radius: 999px;
+  }
+  .theme-pill svg { width: 14px; height: 14px; flex-shrink: 0; }
+  .theme-pill.hue-blue { background: var(--blue-100); color: var(--blue-700); }
+  .theme-pill.hue-green { background: var(--green-100); color: var(--green-600); }
+  .theme-pill.hue-amber { background: var(--amber-100); color: var(--amber-500); }
+
+  .tier-tag {
+    font-size: 11px;
+    color: var(--ink-soft);
+    margin-top: -12px;
+  }
+
+  .question {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.35;
+  }
+
+  .choices {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .choice {
+    text-align: left;
+    font-family: inherit;
+    font-size: 14.5px;
+    color: var(--ink);
+    background: var(--paper);
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    padding: 13px 14px;
+    cursor: pointer;
+    transition: border-color 0.15s ease, transform 0.1s ease, background 0.15s ease;
+  }
+  .choice:hover:not(:disabled) { border-color: var(--blue-500); }
+  .choice:active:not(:disabled) { transform: scale(0.98); }
+  .choice:focus-visible {
+    outline: 2px solid var(--blue-500);
+    outline-offset: 2px;
+  }
+  .choice:disabled { cursor: default; }
+  .choice.correct {
+    background: var(--green-100);
+    border-color: var(--green-600);
+    color: var(--green-600);
+    font-weight: 600;
+  }
+  .choice.incorrect {
+    background: var(--coral-100);
+    border-color: var(--coral-500);
+    color: var(--coral-500);
+  }
+  .choice.picked {
+    background: var(--blue-100);
+    border-color: var(--blue-500);
+    font-weight: 600;
+  }
+
+  .feedback {
+    margin-top: auto;
+    border-radius: 16px;
+    padding: 14px 16px;
+    font-size: 13.5px;
+    line-height: 1.5;
+    display: none;
+    gap: 8px;
+    flex-direction: column;
+  }
+  .feedback.show { display: flex; }
+  .feedback.good { background: var(--green-100); color: var(--green-600); }
+  .feedback.bad { background: var(--coral-100); color: var(--coral-500); }
+  .feedback b { color: var(--ink); font-family: 'Sora', sans-serif; font-size: 14px; }
+  .feedback p { margin: 0; color: var(--ink-soft); }
+
+  .continue-btn {
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    border: none;
+    border-radius: 999px;
+    padding: 12px;
+    background: var(--ink);
+    color: var(--paper);
+    cursor: pointer;
+  }
+  .continue-btn:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 2px; }
+  .continue-btn:disabled { opacity: 0.4; cursor: default; }
+  .ghost-btn {
+    font-family: 'Sora', sans-serif;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 999px;
+    padding: 10px;
+    background: transparent;
+    color: var(--ink);
+    cursor: pointer;
+  }
+
+  .example-note {
+    font-size: 11px;
+    color: var(--ink-soft);
+  }
+
+  #confetti {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 50;
+  }
+
+  /* ---------- Manager: roster ---------- */
+  .roster-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .roster-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 12px 14px;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: var(--ink);
+    transition: border-color 0.15s ease, transform 0.1s ease;
+  }
+  .roster-card:hover { border-color: var(--blue-500); }
+  .roster-card:active { transform: scale(0.99); }
+  .roster-card:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 2px; }
+  .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--blue-100), var(--green-100));
+    color: var(--blue-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Sora', sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    flex-shrink: 0;
+  }
+  .roster-info { display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 0; }
+  .roster-info strong { font-size: 14.5px; }
+  .skill-level-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+  }
+  .skill-level-chip {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    padding: 4px 6px;
+    border-radius: 8px;
+    font-size: 9.5px;
+    font-weight: 700;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .skill-level-chip svg { width: 11px; height: 11px; flex-shrink: 0; }
+  .skill-level-chip span { overflow: hidden; text-overflow: ellipsis; }
+  .skill-level-chip.lvl-0 { background: var(--lvl0); }
+  .skill-level-chip.lvl-1 { background: var(--lvl1); }
+  .skill-level-chip.lvl-2 { background: var(--lvl2); }
+  .skill-level-chip.lvl-3 { background: var(--lvl3); }
+
+  /* ---------- Manager: form fields ---------- */
+  .field-group { display: flex; flex-direction: column; gap: 6px; }
+  .field-label { font-size: 12px; font-weight: 600; color: var(--ink-soft); }
+  .field-input {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 11px 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 12px;
+    background: var(--paper);
+    color: var(--ink);
+    width: 100%;
+  }
+  .field-input:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 2px; }
+
+  /* ---------- Manager: skill picker ---------- */
+  .skill-chip {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 14px;
+    background: var(--surface);
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+    color: var(--ink);
+    width: 100%;
+  }
+  .skill-chip.selected { border-color: var(--blue-500); background: var(--blue-100); }
+  .skill-chip:focus-visible { outline: 2px solid var(--blue-500); outline-offset: 2px; }
+  .skill-chip-icon {
+    width: 30px;
+    height: 30px;
+    border-radius: 9px;
+    background: var(--paper);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--blue-700);
+  }
+  .skill-chip-icon svg { width: 16px; height: 16px; }
+  .skill-chip-text { display: flex; flex-direction: column; gap: 1px; }
+  .skill-chip-text strong { font-size: 13.5px; }
+  .skill-chip-text span { font-size: 11px; color: var(--ink-soft); }
+
+  /* ---------- Manager: ladder / recap ---------- */
+  .visit-recap {
+    background: var(--paper);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 14px;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+  .visit-recap strong { color: var(--ink); }
+  .ladder-block { display: flex; flex-direction: column; gap: 6px; }
+  .ladder-head { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+  .ladder-head .name-wrap { display: flex; align-items: center; gap: 8px; min-width: 0; }
+  .ladder-head .name-wrap svg { width: 15px; height: 15px; flex-shrink: 0; color: var(--blue-700); }
+  .ladder-head strong { font-size: 13px; }
+  .ladder-head .delta { font-size: 11.5px; font-weight: 700; white-space: nowrap; }
+  .ladder-head .delta.up { color: var(--green-600); }
+  .ladder-head .delta.flat { color: var(--ink-soft); }
+  .ladder-track {
+    display: flex;
+    gap: 4px;
+  }
+  .ladder-step {
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--border);
+  }
+  .ladder-step.reached { background: var(--blue-500); }
+  .ladder-step.new-reached { background: var(--green-600); }
+  .ladder-label { font-size: 11px; color: var(--ink-soft); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .card, .choice, .progress-seg > i { transition: none !important; }
+    .card.shake { animation: none !important; }
+  }
+</style>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<div class="app">
+  <div class="topbar">
+    <div class="brand">
+      <div class="brand-mark">DH</div>
+      <div class="brand-text">
+        <strong>My skills challenge</strong>
+        <span id="brandSub">Ton état des lieux de compétences</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="mode-switch">
+    <button class="mode-btn active" id="btnModeCollab" type="button">Vue délégué</button>
+    <button class="mode-btn" id="btnModeManager" type="button">Vue capitaine</button>
+    <button class="mode-btn" id="btnModeOwner" type="button">Vue armateur</button>
+  </div>
+
+  <div id="collabView">
+    <div class="progress-row" id="progressRow" style="margin-bottom:18px; display:none;"></div>
+    <div class="stage" id="stage"></div>
+  </div>
+
+  <div id="managerView" style="display:none;">
+    <div class="sub-tabs" id="mgrSubTabs" style="margin-bottom:4px; display:none;">
+      <button class="sub-tab active" id="btnTabCrew" type="button">Ton équipage</button>
+      <button class="sub-tab" id="btnTabShip" type="button">Ton vaisseau</button>
+    </div>
+    <div class="progress-row" id="mgrProgressRow" style="margin-bottom:18px; display:none;"></div>
+    <div class="stage" id="mgrStage"></div>
+  </div>
+
+  <div id="ownerView" style="display:none;">
+    <div class="stage" id="ownerStage"></div>
+  </div>
+</div>
+
+<canvas id="confetti"></canvas>
+
+<script>
+(function () {
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var LEVEL_LABEL = ['Débutant', 'Autonome', 'Confirmé', 'Expert'];
+  // Échelle affichée aux utilisateurs : 1 (Débutant) à 4 (Expert), alors que
+  // le code interne reste indexé 0-3 (indices de tableau, classes CSS lvl-0…3).
+  function fmtLevel(v) { return (v + 1).toFixed(1); }
+
+  /* ============================================================
+     ICONES (univers voile) — SVG inline, trait simple
+  ============================================================ */
+  var ICONS = {
+    compass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2.2 4.8L9 16l2.2-4.8z" fill="currentColor" stroke="none"/></svg>',
+    anchor: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="5" r="2"/><path d="M12 7v12M7 12H4a8 8 0 0 0 16 0h-3"/></svg>',
+    flag: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3v18"/><path d="M6 4l12 3-12 3z" fill="currentColor" stroke="none"/></svg>',
+    radar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/><path d="M8.2 12a3.8 3.8 0 0 1 7.6 0M5.3 12a6.7 6.7 0 0 1 13.4 0M2.5 12a9.5 9.5 0 0 1 19 0"/></svg>',
+    book: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.5c2-1 5-1 8 1 3-2 6-2 8-1v13c-2-1-5-1-8 1-3-2-6-2-8-1z"/><path d="M12 6.5v13"/></svg>',
+    knot: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M7.5 7.5a4.5 4.5 0 1 0 4.5 4.5 4.5 4.5 0 1 0 4.5-4.5"/><circle cx="7.5" cy="7.5" r="1" fill="currentColor" stroke="none"/><circle cx="16.5" cy="16.5" r="1" fill="currentColor" stroke="none"/></svg>',
+    boat: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 16h17l-2.2 4H5.7z"/><path d="M8 16V5.5l6.5 6.5z" fill="currentColor" stroke="none" opacity="0.85"/><path d="M12 16V3"/></svg>'
+  };
+
+  var SKILLS = [
+    { key: 'smart_beliefs', label: 'Objectifs de visite', tagline: 'Cap & vigie', icon: 'compass', hue: 'hue-blue' },
+    { key: 'ouverture', label: 'Introduction de visite', tagline: 'Appareillage', icon: 'anchor', hue: 'hue-amber' },
+    { key: 'questions', label: 'Questionnement', tagline: 'Signaux & pavillons', icon: 'flag', hue: 'hue-green' },
+    { key: 'ecoute', label: 'Écoute active', tagline: 'Veille', icon: 'radar', hue: 'hue-blue' },
+    { key: 'storytelling', label: 'Storytelling', tagline: 'Journal de bord', icon: 'book', hue: 'hue-amber' },
+    { key: 'conclusion', label: 'Engagement', tagline: 'Accostage', icon: 'knot', hue: 'hue-green' }
+  ];
+  var SKILL_BY_KEY = {};
+  SKILLS.forEach(function (s) { SKILL_BY_KEY[s.key] = s; });
+
+  /* ============================================================
+     MODE SWITCH
+  ============================================================ */
+  var btnModeCollab = document.getElementById('btnModeCollab');
+  var btnModeManager = document.getElementById('btnModeManager');
+  var btnModeOwner = document.getElementById('btnModeOwner');
+  var collabView = document.getElementById('collabView');
+  var managerView = document.getElementById('managerView');
+  var ownerView = document.getElementById('ownerView');
+  var ownerStage = document.getElementById('ownerStage');
+  var brandSub = document.getElementById('brandSub');
+
+  btnModeCollab.addEventListener('click', function () { setMode('collab'); });
+  btnModeManager.addEventListener('click', function () { setMode('manager'); });
+  btnModeOwner.addEventListener('click', function () { setMode('owner'); });
+
+  function setMode(mode) {
+    btnModeCollab.classList.toggle('active', mode === 'collab');
+    btnModeManager.classList.toggle('active', mode === 'manager');
+    btnModeOwner.classList.toggle('active', mode === 'owner');
+    collabView.style.display = mode === 'collab' ? '' : 'none';
+    managerView.style.display = mode === 'manager' ? '' : 'none';
+    ownerView.style.display = mode === 'owner' ? '' : 'none';
+    if (mode === 'collab') brandSub.textContent = 'Ton état des lieux de compétences';
+    else if (mode === 'manager') brandSub.textContent = 'Poste de vigie — évalue ton équipage';
+    else brandSub.textContent = 'Vue flotte — supervise tes équipages';
+    if (mode === 'collab') { if (currentDelegate) renderDelegateHome(); else renderDelegatePicker(); }
+    if (mode === 'manager') { if (currentCaptain) renderRoster(); else renderCaptainPicker(); }
+    if (mode === 'owner') renderOwnerBoard();
+  }
+
+  /* ============================================================
+     DÉLÉGUÉ — état des lieux initial, une seule fois
+     Le délégué passe le questionnaire complet (24 situations, les
+     4 niveaux de chaque compétence) une seule fois pour établir son
+     point de départ. Une fois fait, la vue se verrouille : seul son
+     capitaine peut ensuite faire évoluer ses niveaux, après les duos.
+  ============================================================ */
+  var stage = document.getElementById('stage');
+  var progressRow = document.getElementById('progressRow');
+  var currentDelegate = null; // { member, captain }
+
+  function pillFor(skillKey) {
+    var s = SKILL_BY_KEY[skillKey];
+    var pill = document.createElement('div');
+    pill.className = 'theme-pill ' + s.hue;
+    pill.innerHTML = ICONS[s.icon] + '<span>' + s.label + '</span>';
+    return pill;
+  }
+
+  function showCard(stageEl, cardEl) {
+    stageEl.innerHTML = '';
+    stageEl.appendChild(cardEl);
+    requestAnimationFrame(function () {
+      cardEl.classList.add('active');
+    });
+  }
+
+  function isOnboarded(memberId) {
+    try { return localStorage.getItem('skillsChallengeOnboarded_' + memberId) === 'true'; } catch (e) { return false; }
+  }
+  function setOnboarded(memberId) {
+    try { localStorage.setItem('skillsChallengeOnboarded_' + memberId, 'true'); } catch (e) {}
+  }
+
+  function allDelegates() {
+    var list = [];
+    CAPTAINS.forEach(function (c) {
+      c.crew.forEach(function (m) { list.push({ member: m, captain: c }); });
+    });
+    return list;
+  }
+
+  function delegateSkillGrid(levels) {
+    var grid = document.createElement('div');
+    grid.className = 'skill-level-grid';
+    SKILLS.forEach(function (s, i) {
+      var lvl = levels[s.key];
+      var chip = document.createElement('span');
+      chip.className = 'skill-level-chip lvl-' + lvl;
+      chip.title = s.label + ' — ' + LEVEL_LABEL[lvl];
+      chip.innerHTML = ICONS[s.icon] + '<span>' + RADAR_SHORT[i] + '</span>';
+      grid.appendChild(chip);
+    });
+    return grid;
+  }
+
+  function delegateBadge() {
+    var badge = document.createElement('div');
+    badge.className = 'visit-recap';
+    badge.style.flexDirection = 'row';
+    badge.style.alignItems = 'center';
+    badge.style.justifyContent = 'space-between';
+    var label = document.createElement('span');
+    label.innerHTML = 'Connecté en tant que <strong>' + currentDelegate.member.name + '</strong>';
+    var change = document.createElement('button');
+    change.type = 'button';
+    change.className = 'ghost-btn';
+    change.style.padding = '5px 10px';
+    change.style.fontSize = '11.5px';
+    change.textContent = 'Changer';
+    change.addEventListener('click', function () { currentDelegate = null; renderDelegatePicker(); });
+    badge.appendChild(label);
+    badge.appendChild(change);
+    return badge;
+  }
+
+  function renderDelegatePicker() {
+    progressRow.style.display = 'none';
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Qui es-tu ?';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = 'Sélecteur de démonstration, pas une vraie authentification. Choisis ton nom pour accéder à ton état des lieux.';
+
+    var list = document.createElement('div');
+    list.className = 'roster-list';
+
+    allDelegates().forEach(function (entry) {
+      var btn = document.createElement('button');
+      btn.className = 'roster-card';
+      btn.type = 'button';
+
+      var avatar = document.createElement('div');
+      avatar.className = 'avatar';
+      avatar.textContent = initialsOf(entry.member.name);
+
+      var info = document.createElement('div');
+      info.className = 'roster-info';
+      var name = document.createElement('strong');
+      name.textContent = entry.member.name;
+      var team = document.createElement('span');
+      team.className = 'example-note';
+      team.textContent = 'Équipage de ' + entry.captain.name;
+      info.appendChild(name);
+      info.appendChild(team);
+
+      btn.appendChild(avatar);
+      btn.appendChild(info);
+      btn.addEventListener('click', function () {
+        currentDelegate = entry;
+        renderDelegateHome();
+      });
+      list.appendChild(btn);
+    });
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(list);
+    showCard(stage, card);
+  }
+
+  function renderDelegateHome() {
+    if (isOnboarded(currentDelegate.member.id)) renderDelegateLocked();
+    else renderDelegateIntro();
+  }
+
+  function renderDelegateIntro() {
+    progressRow.style.display = 'none';
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.appendChild(delegateBadge());
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Ton état des lieux';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = "24 situations (les 6 compétences, tous niveaux confondus), à faire une seule fois pour établir ton point de départ. Ensuite, seul ton capitaine pourra faire évoluer ces niveaux, après vos duos.";
+
+    var start = document.createElement('button');
+    start.className = 'continue-btn';
+    start.type = 'button';
+    start.textContent = 'Commencer';
+    start.addEventListener('click', startOnboarding);
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(start);
+    showCard(stage, card);
+  }
+
+  function startOnboarding() {
+    var order = [];
+    SKILLS.forEach(function (s) {
+      SITUATIONS[s.key].forEach(function (situation) { order.push({ theme: s.key, data: situation }); });
+    });
+
+    var answers = {};
+    SKILLS.forEach(function (s) { answers[s.key] = []; });
+
+    progressRow.innerHTML = '';
+    order.forEach(function () {
+      var seg = document.createElement('div');
+      seg.className = 'progress-seg';
+      seg.innerHTML = '<i></i>';
+      progressRow.appendChild(seg);
+    });
+    progressRow.style.display = 'flex';
+
+    function updateOnboardingProgress(step) {
+      var segs = progressRow.querySelectorAll('.progress-seg > i');
+      segs.forEach(function (bar, i) { bar.style.width = i < step ? '100%' : '0%'; });
+    }
+
+    function renderStep(step) {
+      var entry = order[step];
+      var card = document.createElement('div');
+      card.className = 'card';
+
+      var q = document.createElement('div');
+      q.className = 'question';
+      q.textContent = entry.data.q;
+
+      var choicesWrap = document.createElement('div');
+      choicesWrap.className = 'choices';
+
+      entry.data.options.forEach(function (text, levelIndex) {
+        var btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.type = 'button';
+        btn.textContent = text;
+        btn.addEventListener('click', function () {
+          Array.prototype.forEach.call(choicesWrap.children, function (b) {
+            b.classList.remove('picked');
+            b.disabled = true;
+          });
+          btn.classList.add('picked');
+          answers[entry.theme].push(levelIndex);
+
+          setTimeout(function () {
+            var nextStep = step + 1;
+            updateOnboardingProgress(nextStep);
+            if (nextStep < order.length) {
+              showCard(stage, renderStep(nextStep));
+            } else {
+              finishOnboarding();
+            }
+          }, 250);
+        });
+        choicesWrap.appendChild(btn);
+      });
+
+      card.appendChild(pillFor(entry.theme));
+      card.appendChild(q);
+      card.appendChild(choicesWrap);
+      return card;
+    }
+
+    function finishOnboarding() {
+      var levels = {};
+      SKILLS.forEach(function (s) {
+        var vals = answers[s.key];
+        var avg = vals.reduce(function (a, b) { return a + b; }, 0) / vals.length;
+        levels[s.key] = Math.min(3, Math.max(0, Math.round(avg)));
+      });
+      saveLevels(currentDelegate.member.id, levels);
+      setOnboarded(currentDelegate.member.id);
+      if (!reduceMotion) burstConfetti();
+      showCard(stage, renderDelegateRecap(levels));
+    }
+
+    updateOnboardingProgress(0);
+    showCard(stage, renderStep(0));
+  }
+
+  function renderDelegateRecap(levels) {
+    progressRow.style.display = 'none';
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Ton état des lieux initial';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = "Terminé, merci ! Voici ton point de départ sur chaque compétence. Cette vue est maintenant verrouillée : seul ton capitaine pourra la faire évoluer, après vos visites duo.";
+
+    var grid = delegateSkillGrid(levels);
+    grid.style.marginTop = '4px';
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(grid);
+    showCard(stage, card);
+  }
+
+  function renderDelegateLocked() {
+    progressRow.style.display = 'none';
+    var levels = getLevels(currentDelegate.member);
+
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.style.opacity = '0.72';
+    card.appendChild(delegateBadge());
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = '🔒 Questionnaire déjà complété';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = "Tu as déjà fait ton état des lieux. Cette vue est verrouillée : seul ton capitaine peut désormais mettre à jour tes compétences, après vos visites duo.";
+
+    var grid = delegateSkillGrid(levels);
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(grid);
+    showCard(stage, card);
+  }
+
+  /* ============================================================
+     CAPITAINE (manager) — évaluation comportementale d'un
+     membre de l'équipage, par étape de visite
+  ============================================================ */
+
+  // 5 capitaines, chacun avec son propre équipage d'exemple — à remplacer
+  // par un import CSV + un vrai compte par capitaine côté admin.
+  var CAPTAINS = [
+    {
+      id: 'cap1', name: 'Camille Roussel', color: 'var(--blue-500)',
+      crew: [
+        { id: 'claire', name: 'Claire Dubois', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'karim', name: 'Karim Haddad', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'lea', name: 'Léa Bonnet', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'thomas', name: 'Thomas Faure', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'nora', name: 'Nora Idrissi', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } }
+      ]
+    },
+    {
+      id: 'cap2', name: 'Julien Perrot', color: 'var(--green-600)',
+      crew: [
+        { id: 'cap2_elise', name: 'Élise Fournier', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap2_bastien', name: 'Bastien Roy', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap2_manon', name: 'Manon Petit', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } }
+      ]
+    },
+    {
+      id: 'cap3', name: 'Sophie Lambert', color: 'var(--amber-500)',
+      crew: [
+        { id: 'cap3_youssef', name: 'Youssef Amrani', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap3_aline', name: 'Aline Moreau', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap3_hugo', name: 'Hugo Lefebvre', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } }
+      ]
+    },
+    {
+      id: 'cap4', name: 'Marc Girard', color: 'var(--coral-500)',
+      crew: [
+        { id: 'cap4_lena', name: 'Léna Faure', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap4_theo', name: 'Théo Bernard', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap4_chloe', name: 'Chloé Dumas', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } }
+      ]
+    },
+    {
+      id: 'cap5', name: 'Inès Chevalier', color: 'var(--series5)',
+      crew: [
+        { id: 'cap5_adam', name: 'Adam Roche', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap5_sarah', name: 'Sarah Blanchard', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } },
+        { id: 'cap5_nathan', name: 'Nathan Perret', baseline: { smart_beliefs: 0, ouverture: 0, questions: 0, ecoute: 0, storytelling: 0, conclusion: 0 } }
+      ]
+    }
+  ];
+
+  function crewAverages(crew) {
+    return SKILLS.map(function (s) {
+      var vals = crew.map(function (m) { return getLevels(m)[s.key]; });
+      return vals.reduce(function (a, b) { return a + b; }, 0) / vals.length;
+    });
+  }
+
+  function captainLevels(captain) {
+    return crewAverages(captain.crew);
+  }
+
+  function initialsOf(name) {
+    return name.split(' ').map(function (w) { return w[0]; }).join('');
+  }
+
+  // Simulateur de rôle — PAS une authentification : tout le code et les
+  // données restent visibles côté client. Une vraie restriction "un
+  // capitaine ne voit que son équipage" nécessite un backend (Phase 1).
+  var currentCaptain = null;
+
+  // Grille pré-établie : 4 situations par compétence, une par niveau de
+  // technicité (tier 0 = Débutant … tier 3 = Expert). Chaque situation
+  // propose 4 réponses comportementales, une par niveau de maturité.
+  var SITUATIONS = {
+    smart_beliefs: [
+      { tier: 0, q: "Avant une visite, sur l'objectif de la rencontre, le délégué…", options: ["N'a pas d'objectif précis, il improvise sur place", "A un objectif en tête mais pas formalisé ni mesurable", "Se fixe un objectif SMART clair pour la visite", "Fixe un objectif SMART et l'articule à l'étape du parcours d'adoption du médecin"] },
+      { tier: 1, q: "Sur la connaissance du parcours d'adoption du client, le délégué…", options: ["Ne sait pas le situer", "Connaît le concept en théorie mais ne l'applique pas", "Identifie l'étape du client et adapte son message", "Anticipe la prochaine étape et prépare le levier pour l'y faire progresser"] },
+      { tier: 2, q: "Sur la belief map du médecin, le délégué…", options: ["N'en a jamais construit", "Connaît le concept mais ne l'a pas formalisée pour ce client", "A identifié les croyances clés et prépare ses messages en conséquence", "Met à jour sa belief map après chaque interaction et l'utilise pour prioriser ses messages"] },
+      { tier: 3, q: "Face à un changement de contexte juste avant la visite, le délégué…", options: ["Garde le même plan sans en tenir compte", "Le remarque mais ne réajuste rien", "Ajuste son objectif SMART à la marge", "Reconstruit son plan en cohérence avec objectif, parcours d'adoption et belief map"] }
+    ],
+    ouverture: [
+      { tier: 0, q: "Au tout début de l'échange, le délégué…", options: ["Enchaîne directement sur son message", "Formule de politesse générique", "Accroche personnalisée et pertinente", "Crée un climat de confiance et pose le cadre de la rencontre"] },
+      { tier: 1, q: "Sur le temps disponible du client, le délégué…", options: ["Ne le demande jamais", "Le demande mais ne s'y adapte pas", "Le vérifie et ajuste son plan", "L'anticipe et propose d'emblée un format adapté"] },
+      { tier: 2, q: "Quand le client semble pressé dès l'ouverture, le délégué…", options: ["Poursuit son ouverture standard", "Accélère sans changer d'approche", "Reformule pour capter l'attention en une phrase forte", "Transforme la contrainte en levier (format ultra-court à forte valeur)"] },
+      { tier: 3, q: "Sur l'énoncé de l'objectif de visite, le délégué…", options: ["Ne l'annonce jamais", "L'annonce de façon vague", "L'annonce clairement avec le bénéfice client", "L'annonce, le relie à un besoin exprimé précédemment, et obtient l'accord du client sur le cadre"] }
+    ],
+    questions: [
+      { tier: 0, q: "Pour lancer l'échange sur les besoins, le délégué…", options: ["Pose uniquement des questions fermées", "Quelques questions ouvertes mais génériques", "Questions ouvertes ciblées sur la pratique du client", "Enchaîne les questions ouvertes pour révéler un besoin non exprimé"] },
+      { tier: 1, q: "Quand le client répond de façon évasive, le délégué…", options: ["Passe à la question suivante", "Répète la même question autrement", "Relance avec une question de clarification", "Relance en s'appuyant sur un élément précis de la réponse pour ouvrir une nouvelle piste"] },
+      { tier: 2, q: "Sur l'équilibre parole/question, le délégué…", options: ["Parle la majorité du temps", "Pose quelques questions puis reprend vite la parole", "Maintient un vrai dialogue", "Structure l'échange pour que le client construise lui-même la conclusion"] },
+      { tier: 3, q: "Sur la préparation de ses questions, le délégué…", options: ["Improvise sur le moment", "Liste générique pour tous les clients", "Questions ciblées selon le profil du client", "Questions qui testent une hypothèse précise issue de sa belief map"] }
+    ],
+    ecoute: [
+      { tier: 0, q: "Pendant que le client parle, le délégué…", options: ["Prépare sa réponse ou coupe la parole", "Écoute sans interrompre mais sans signes d'écoute", "Écoute et reformule", "Écoute, reformule, et identifie l'émotion ou l'intention sous-jacente"] },
+      { tier: 1, q: "Face à un point de vue inattendu, le délégué…", options: ["L'ignore et poursuit son plan", "Le note mentalement sans en tenir compte", "L'intègre dans la suite de l'échange", "L'utilise pour ajuster son message et le dit explicitement au client"] },
+      { tier: 2, q: "Sur les silences, le délégué…", options: ["Les comble systématiquement", "Mal à l'aise mais les tolère", "Laisse le silence au client", "L'utilise volontairement pour inviter à approfondir"] },
+      { tier: 3, q: "Après la visite, sur ce qu'il retient, le délégué…", options: ["Ne se souvient pas des points précis", "Se souvient des grandes lignes", "Restitue fidèlement les points clés", "Les restitue et les relie aux visites précédentes pour en tirer une tendance"] }
+    ],
+    storytelling: [
+      { tier: 0, q: "Pour illustrer un message clé, le délégué…", options: ["S'appuie seulement sur des données ou slides", "Exemple concret improvisé", "Histoire préparée et pertinente", "Adapte son histoire en temps réel au client"] },
+      { tier: 1, q: "Sur la structure de ses histoires, le délégué…", options: ["Anecdotes sans fil conducteur", "Début/fin mais sans message clair", "Situation, enjeu, résolution clairs", "Construit l'histoire pour amener le client à la conclusion souhaitée"] },
+      { tier: 2, q: "Sur le lien entre l'histoire et la réalité du client, le délégué…", options: ["Histoires génériques non liées au client", "Lien avec le thème mais pas la spécialité", "Histoire transposable à la pratique du client", "Histoire que le client peut s'imaginer sur ses propres patients"] },
+      { tier: 3, q: "Sur l'impact de ses histoires, le délégué…", options: ["Ne vérifie jamais l'effet produit", "Raconte puis enchaîne sans vérifier", "Observe la réaction et ajuste la suite", "Vérifie explicitement ce qui est retenu et s'en sert de point d'ancrage"] }
+    ],
+    conclusion: [
+      { tier: 0, q: "À la fin de l'échange, le délégué…", options: ["Quitte sans conclure", "Résume rapidement sans proposer de suite", "Résume et propose une prochaine étape claire", "Résume, propose et obtient un engagement explicite"] },
+      { tier: 1, q: "Sur la nature des prochaines étapes, le délégué…", options: ["N'en propose aucune", "Suite vague (« on se revoit bientôt »)", "Suite précise et datée", "Suite précise, datée, et reliée à l'objectif SMART initial"] },
+      { tier: 2, q: "Quand le client hésite à s'engager, le délégué…", options: ["Laisse tomber", "Insiste sans reformuler", "Explore la réserve et adapte sa proposition", "Transforme l'hésitation en compromis concret qui fait avancer la relation"] },
+      { tier: 3, q: "Après la visite, sur le suivi de l'engagement, le délégué…", options: ["Aucun suivi", "Suivi sans lien avec ce qui a été convenu", "Suivi exact de ce qui a été convenu", "Anticipe le suivi et prépare déjà la visite suivante"] }
+    ]
+  };
+
+  var mgrStage = document.getElementById('mgrStage');
+  var mgrProgressRow = document.getElementById('mgrProgressRow');
+  var mgrSubTabs = document.getElementById('mgrSubTabs');
+  var btnTabCrew = document.getElementById('btnTabCrew');
+  var btnTabShip = document.getElementById('btnTabShip');
+  btnTabCrew.addEventListener('click', renderRoster);
+  btnTabShip.addEventListener('click', renderShip);
+
+  function getLevels(member) {
+    var levels = Object.assign({}, member.baseline);
+    // On ne réapplique que les clés de compétences valides : une évaluation
+    // sauvegardée sous un ancien référentiel (clés différentes) ne doit pas
+    // laisser de niveau manquant pour les compétences actuelles.
+    try {
+      var raw = localStorage.getItem('doseHebdoLevels_' + member.id);
+      if (raw) {
+        var stored = JSON.parse(raw);
+        SKILLS.forEach(function (s) {
+          if (typeof stored[s.key] === 'number') levels[s.key] = stored[s.key];
+        });
+      }
+    } catch (e) {}
+    return levels;
+  }
+
+  function saveLevels(memberId, levels) {
+    try {
+      localStorage.setItem('doseHebdoLevels_' + memberId, JSON.stringify(levels));
+    } catch (e) {}
+  }
+
+  function captainBadge() {
+    var badge = document.createElement('div');
+    badge.className = 'visit-recap';
+    badge.style.flexDirection = 'row';
+    badge.style.alignItems = 'center';
+    badge.style.justifyContent = 'space-between';
+    var label = document.createElement('span');
+    label.innerHTML = 'Connecté en tant que <strong>' + currentCaptain.name + '</strong>';
+    var change = document.createElement('button');
+    change.type = 'button';
+    change.className = 'ghost-btn';
+    change.style.padding = '5px 10px';
+    change.style.fontSize = '11.5px';
+    change.textContent = 'Changer';
+    change.addEventListener('click', function () { currentCaptain = null; renderCaptainPicker(); });
+    badge.appendChild(label);
+    badge.appendChild(change);
+    return badge;
+  }
+
+  function renderCaptainPicker() {
+    mgrProgressRow.style.display = 'none';
+    mgrSubTabs.style.display = 'none';
+
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Qui es-tu ?';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = "Sélecteur de démonstration, pas une vraie authentification : dans la vraie appli, chaque capitaine se connecterait avec son propre compte et ne verrait que son équipage.";
+
+    var list = document.createElement('div');
+    list.className = 'roster-list';
+
+    CAPTAINS.forEach(function (captain) {
+      var btn = document.createElement('button');
+      btn.className = 'roster-card';
+      btn.type = 'button';
+
+      var avatar = document.createElement('div');
+      avatar.className = 'avatar';
+      avatar.textContent = initialsOf(captain.name);
+      avatar.style.background = captain.color;
+      avatar.style.color = '#fff';
+
+      var info = document.createElement('div');
+      info.className = 'roster-info';
+      var name = document.createElement('strong');
+      name.textContent = captain.name;
+      var crewSize = document.createElement('span');
+      crewSize.className = 'example-note';
+      crewSize.textContent = captain.crew.length + ' délégués';
+      info.appendChild(name);
+      info.appendChild(crewSize);
+
+      btn.appendChild(avatar);
+      btn.appendChild(info);
+      btn.addEventListener('click', function () { currentCaptain = captain; renderRoster(); });
+      list.appendChild(btn);
+    });
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(list);
+    showCard(mgrStage, card);
+  }
+
+  var RADAR_SHORT = ['Objectifs', 'Intro', 'Question', 'Écoute', 'Story', 'Engagement'];
+
+  function radarChartSVG(values) {
+    // cx décalé (et viewBox élargi) pour laisser la place aux libellés
+    // longs ("Engagement", "Objectifs") sans qu'ils débordent à gauche/droite.
+    var cx = 190, cy = 140, Rmax = 95, labelR = 118;
+    var n = SKILLS.length;
+    function pt(i, r) {
+      var angle = (Math.PI * 2 * i / n) - Math.PI / 2;
+      return { x: cx + r * Math.cos(angle), y: cy + r * Math.sin(angle) };
+    }
+    var rings = [1, 2, 3].map(function (level) {
+      var r = (level / 3) * Rmax;
+      var pts = [];
+      for (var i = 0; i < n; i++) { var p = pt(i, r); pts.push(p.x.toFixed(1) + ',' + p.y.toFixed(1)); }
+      return '<polygon points="' + pts.join(' ') + '" fill="none" stroke="var(--border)" stroke-width="1"/>';
+    }).join('');
+    var spokes = '';
+    for (var i = 0; i < n; i++) {
+      var p = pt(i, Rmax);
+      spokes += '<line x1="' + cx + '" y1="' + cy + '" x2="' + p.x.toFixed(1) + '" y2="' + p.y.toFixed(1) + '" stroke="var(--border)" stroke-width="1"/>';
+    }
+    var dataPts = [];
+    var dots = '';
+    for (var j = 0; j < n; j++) {
+      var v = Math.max(0, Math.min(3, values[j]));
+      var dp = pt(j, (v / 3) * Rmax);
+      dataPts.push(dp.x.toFixed(1) + ',' + dp.y.toFixed(1));
+      dots += '<circle cx="' + dp.x.toFixed(1) + '" cy="' + dp.y.toFixed(1) + '" r="3.2" fill="var(--blue-700)"/>';
+    }
+    var dataPoly = '<polygon points="' + dataPts.join(' ') + '" fill="var(--blue-500)" fill-opacity="0.22" stroke="var(--blue-500)" stroke-width="2" stroke-linejoin="round"/>';
+    var labels = '';
+    for (var k = 0; k < n; k++) {
+      var lp = pt(k, labelR);
+      var anchor = 'middle';
+      if (lp.x < cx - 8) anchor = 'end';
+      else if (lp.x > cx + 8) anchor = 'start';
+      labels += '<text x="' + lp.x.toFixed(1) + '" y="' + lp.y.toFixed(1) + '" text-anchor="' + anchor + '" dominant-baseline="middle" font-size="10.5" font-family="Sora, Inter, sans-serif" font-weight="600" fill="var(--ink-soft)">' + RADAR_SHORT[k] + '</text>';
+    }
+    return '<svg viewBox="0 0 380 280" width="100%" style="max-width:340px; display:block; margin:0 auto;">' + rings + spokes + dataPoly + dots + labels + '</svg>';
+  }
+
+  function renderShip() {
+    mgrProgressRow.style.display = 'none';
+    mgrSubTabs.style.display = 'flex';
+    btnTabShip.classList.add('active');
+    btnTabCrew.classList.remove('active');
+
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.appendChild(captainBadge());
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Ton vaisseau';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = "Niveau moyen de l'équipage de " + currentCaptain.name + " sur chaque compétence (1 = Débutant, 4 = Expert), calculé à partir des évaluations enregistrées.";
+
+    var chartWrap = document.createElement('div');
+    var values = crewAverages(currentCaptain.crew);
+    chartWrap.innerHTML = radarChartSVG(values);
+
+    var maxVal = Math.max.apply(null, values);
+    var minVal = Math.min.apply(null, values);
+    var maxIdx = values.indexOf(maxVal);
+    var minIdx = values.indexOf(minVal);
+
+    var strong = document.createElement('div');
+    strong.className = 'visit-recap';
+    strong.innerHTML = '<span><strong>Point fort de l\'équipage</strong></span><span>' + SKILLS[maxIdx].label + ' — ' + fmtLevel(maxVal) + ' / 4</span>';
+
+    var weak = document.createElement('div');
+    weak.className = 'visit-recap';
+    weak.innerHTML = '<span><strong>Axe de progression prioritaire</strong></span><span>' + SKILLS[minIdx].label + ' — ' + fmtLevel(minVal) + ' / 4</span>';
+
+    var note = document.createElement('p');
+    note.className = 'example-note';
+    note.textContent = "Vue calculée sur l'équipe de démo — se met à jour au fil des évaluations que tu enregistres dans Ton équipage.";
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(chartWrap);
+    card.appendChild(strong);
+    card.appendChild(weak);
+    card.appendChild(note);
+    showCard(mgrStage, card);
+  }
+
+  function renderRoster() {
+    mgrProgressRow.style.display = 'none';
+    mgrSubTabs.style.display = 'flex';
+    btnTabCrew.classList.add('active');
+    btnTabShip.classList.remove('active');
+
+    var card = document.createElement('div');
+    card.className = 'card';
+    card.appendChild(captainBadge());
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Ton équipage';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = "Équipe d'exemple — à remplacer par l'import CSV côté admin. Choisis un membre à évaluer.";
+
+    var list = document.createElement('div');
+    list.className = 'roster-list';
+
+    currentCaptain.crew.forEach(function (member) {
+      var levels = getLevels(member);
+      var btn = document.createElement('button');
+      btn.className = 'roster-card';
+      btn.type = 'button';
+
+      var avatar = document.createElement('div');
+      avatar.className = 'avatar';
+      avatar.textContent = initialsOf(member.name);
+
+      var info = document.createElement('div');
+      info.className = 'roster-info';
+      var name = document.createElement('strong');
+      name.textContent = member.name;
+
+      var grid = document.createElement('div');
+      grid.className = 'skill-level-grid';
+      SKILLS.forEach(function (s, i) {
+        var lvl = levels[s.key];
+        var chip = document.createElement('span');
+        chip.className = 'skill-level-chip lvl-' + lvl;
+        chip.title = s.label + ' — ' + LEVEL_LABEL[lvl];
+        chip.innerHTML = ICONS[s.icon] + '<span>' + RADAR_SHORT[i] + '</span>';
+        grid.appendChild(chip);
+      });
+
+      info.appendChild(name);
+      info.appendChild(grid);
+
+      btn.appendChild(avatar);
+      btn.appendChild(info);
+      btn.addEventListener('click', function () { startVisitForm(member); });
+      list.appendChild(btn);
+    });
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(list);
+    showCard(mgrStage, card);
+  }
+
+  function startVisitForm(member) {
+    mgrSubTabs.style.display = 'none';
+    var visit = { date: '', centre: '', medecin: '' };
+
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Fiche de visite duo';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = 'Contexte de l\'observation pour ' + member.name + '.';
+
+    var form = document.createElement('div');
+    form.style.display = 'flex';
+    form.style.flexDirection = 'column';
+    form.style.gap = '14px';
+
+    function field(labelText, type, key) {
+      var group = document.createElement('div');
+      group.className = 'field-group';
+      var label = document.createElement('label');
+      label.className = 'field-label';
+      label.textContent = labelText;
+      var input = document.createElement('input');
+      input.className = 'field-input';
+      input.type = type;
+      input.addEventListener('input', function () {
+        visit[key] = input.value;
+        continueBtn.disabled = !(visit.date && visit.centre && visit.medecin);
+      });
+      label.appendChild(input);
+      group.appendChild(label);
+      return group;
+    }
+
+    var dateField = field('Date de la visite duo', 'date', 'date');
+    var centreField = field('Centre / lieu', 'text', 'centre');
+    centreField.querySelector('input').placeholder = 'Ex : Cabinet Dr Martin, Lyon';
+    var medecinField = field('Médecin / interlocuteur observé', 'text', 'medecin');
+    medecinField.querySelector('input').placeholder = 'Ex : Dr Martin';
+
+    form.appendChild(dateField);
+    form.appendChild(centreField);
+    form.appendChild(medecinField);
+
+    var continueBtn = document.createElement('button');
+    continueBtn.className = 'continue-btn';
+    continueBtn.type = 'button';
+    continueBtn.textContent = 'Continuer';
+    continueBtn.disabled = true;
+    continueBtn.addEventListener('click', function () { renderSkillPicker(member, visit); });
+
+    var back = document.createElement('button');
+    back.className = 'ghost-btn';
+    back.type = 'button';
+    back.textContent = "← Retour à l'équipage";
+    back.addEventListener('click', renderRoster);
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(form);
+    card.appendChild(continueBtn);
+    card.appendChild(back);
+    showCard(mgrStage, card);
+  }
+
+  function renderSkillPicker(member, visit) {
+    var selected = [];
+
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Compétences observées';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = 'Sélectionne les étapes de visite que tu as pu observer chez ' + member.name + '. Les questions posées s\'adaptent au niveau actuel du délégué.';
+
+    var list = document.createElement('div');
+    list.style.display = 'flex';
+    list.style.flexDirection = 'column';
+    list.style.gap = '8px';
+
+    SKILLS.forEach(function (s) {
+      var chip = document.createElement('button');
+      chip.className = 'skill-chip';
+      chip.type = 'button';
+
+      var iconWrap = document.createElement('div');
+      iconWrap.className = 'skill-chip-icon';
+      iconWrap.innerHTML = ICONS[s.icon];
+
+      var text = document.createElement('div');
+      text.className = 'skill-chip-text';
+      text.innerHTML = '<strong>' + s.label + '</strong><span>' + s.tagline + '</span>';
+
+      chip.appendChild(iconWrap);
+      chip.appendChild(text);
+      chip.addEventListener('click', function () {
+        var idx = selected.indexOf(s.key);
+        if (idx === -1) selected.push(s.key); else selected.splice(idx, 1);
+        chip.classList.toggle('selected');
+        startBtn.disabled = selected.length === 0;
+      });
+      list.appendChild(chip);
+    });
+
+    var startBtn = document.createElement('button');
+    startBtn.className = 'continue-btn';
+    startBtn.type = 'button';
+    startBtn.textContent = "Commencer l'évaluation";
+    startBtn.disabled = true;
+    startBtn.addEventListener('click', function () { startEvaluation(member, visit, selected.slice()); });
+
+    var back = document.createElement('button');
+    back.className = 'ghost-btn';
+    back.type = 'button';
+    back.textContent = '← Retour à la fiche de visite';
+    back.addEventListener('click', function () { startVisitForm(member); });
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(list);
+    card.appendChild(startBtn);
+    card.appendChild(back);
+    showCard(mgrStage, card);
+  }
+
+  function questionsFor(skillKey, currentLevel) {
+    var tiers = currentLevel >= 3 ? [2, 3] : [currentLevel, currentLevel + 1];
+    return SITUATIONS[skillKey].filter(function (s) { return tiers.indexOf(s.tier) !== -1; });
+  }
+
+  function startEvaluation(member, visit, selectedSkills) {
+    var before = getLevels(member);
+    var order = [];
+    selectedSkills.forEach(function (skillKey) {
+      questionsFor(skillKey, before[skillKey]).forEach(function (situation) {
+        order.push({ theme: skillKey, data: situation });
+      });
+    });
+
+    var answers = {};
+    selectedSkills.forEach(function (t) { answers[t] = []; });
+
+    mgrProgressRow.innerHTML = '';
+    order.forEach(function () {
+      var seg = document.createElement('div');
+      seg.className = 'progress-seg';
+      seg.innerHTML = '<i></i>';
+      mgrProgressRow.appendChild(seg);
+    });
+    mgrProgressRow.style.display = 'flex';
+
+    function updateMgrProgress(step) {
+      var segs = mgrProgressRow.querySelectorAll('.progress-seg > i');
+      segs.forEach(function (bar, i) { bar.style.width = i < step ? '100%' : '0%'; });
+    }
+
+    function renderSituation(step) {
+      var entry = order[step];
+      var s = SKILL_BY_KEY[entry.theme];
+      var card = document.createElement('div');
+      card.className = 'card';
+
+      var name = document.createElement('p');
+      name.className = 'example-note';
+      name.style.margin = '0';
+      name.textContent = 'Évaluation de ' + member.name;
+
+      var tierTag = document.createElement('p');
+      tierTag.className = 'tier-tag';
+      tierTag.textContent = 'Niveau ciblé : ' + LEVEL_LABEL[entry.data.tier];
+
+      var q = document.createElement('div');
+      q.className = 'question';
+      q.textContent = entry.data.q;
+
+      var choicesWrap = document.createElement('div');
+      choicesWrap.className = 'choices';
+
+      entry.data.options.forEach(function (text, levelIndex) {
+        var btn = document.createElement('button');
+        btn.className = 'choice';
+        btn.type = 'button';
+        btn.textContent = text;
+        btn.addEventListener('click', function () {
+          Array.prototype.forEach.call(choicesWrap.children, function (b) {
+            b.classList.remove('picked');
+            b.disabled = true;
+          });
+          btn.classList.add('picked');
+          answers[entry.theme].push(levelIndex);
+
+          setTimeout(function () {
+            var nextStep = step + 1;
+            updateMgrProgress(nextStep);
+            if (nextStep < order.length) {
+              showCard(mgrStage, renderSituation(nextStep));
+            } else {
+              finishEvaluation();
+            }
+          }, 250);
+        });
+        choicesWrap.appendChild(btn);
+      });
+
+      card.appendChild(pillFor(entry.theme));
+      card.appendChild(name);
+      card.appendChild(tierTag);
+      card.appendChild(q);
+      card.appendChild(choicesWrap);
+      return card;
+    }
+
+    function finishEvaluation() {
+      var after = Object.assign({}, before);
+      selectedSkills.forEach(function (t) {
+        var vals = answers[t];
+        var avg = vals.reduce(function (a, b) { return a + b; }, 0) / vals.length;
+        after[t] = Math.min(3, Math.max(0, Math.round(avg)));
+      });
+      saveLevels(member.id, after);
+      showCard(mgrStage, renderRecap(member, visit, before, after, selectedSkills));
+    }
+
+    updateMgrProgress(0);
+    showCard(mgrStage, renderSituation(0));
+  }
+
+  function renderRecap(member, visit, before, after, evaluatedSkills) {
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Évaluation enregistrée';
+
+    var visitRecap = document.createElement('div');
+    visitRecap.className = 'visit-recap';
+    visitRecap.innerHTML =
+      '<span><strong>' + member.name + '</strong></span>' +
+      '<span>' + (visit.date || '—') + ' · ' + (visit.centre || '—') + '</span>' +
+      '<span>Interlocuteur observé : ' + (visit.medecin || '—') + '</span>';
+
+    var wrap = document.createElement('div');
+    wrap.style.display = 'flex';
+    wrap.style.flexDirection = 'column';
+    wrap.style.gap = '16px';
+
+    evaluatedSkills.forEach(function (t) {
+      var s = SKILL_BY_KEY[t];
+      var block = document.createElement('div');
+      block.className = 'ladder-block';
+
+      var head = document.createElement('div');
+      head.className = 'ladder-head';
+      var nameWrap = document.createElement('div');
+      nameWrap.className = 'name-wrap';
+      nameWrap.innerHTML = ICONS[s.icon] + '<strong>' + s.label + '</strong>';
+      var delta = document.createElement('span');
+      var diff = after[t] - before[t];
+      delta.className = 'delta ' + (diff > 0 ? 'up' : 'flat');
+      delta.textContent = diff > 0 ? '+' + diff + ' niveau' + (diff > 1 ? 'x' : '') : 'stable';
+      head.appendChild(nameWrap);
+      head.appendChild(delta);
+
+      var track = document.createElement('div');
+      track.className = 'ladder-track';
+      for (var i = 0; i < 4; i++) {
+        var step = document.createElement('div');
+        step.className = 'ladder-step';
+        if (i <= before[t] && i <= after[t]) step.classList.add('reached');
+        else if (i <= after[t]) step.classList.add('new-reached');
+        track.appendChild(step);
+      }
+
+      var lbl = document.createElement('div');
+      lbl.className = 'ladder-label';
+      lbl.textContent = LEVEL_LABEL[before[t]] + ' → ' + LEVEL_LABEL[after[t]];
+
+      block.appendChild(head);
+      block.appendChild(track);
+      block.appendChild(lbl);
+      wrap.appendChild(block);
+    });
+
+    var note = document.createElement('p');
+    note.className = 'example-note';
+    note.textContent = "Niveaux calculés à partir d'une grille de démo (questions adaptées au niveau actuel, moyenne des réponses arrondie). Barème et libellés à valider avec les RH avant mise en production.";
+
+    var back = document.createElement('button');
+    back.className = 'ghost-btn';
+    back.type = 'button';
+    back.textContent = "← Retour à l'équipage";
+    back.addEventListener('click', renderRoster);
+
+    card.appendChild(title);
+    card.appendChild(visitRecap);
+    card.appendChild(wrap);
+    card.appendChild(note);
+    card.appendChild(back);
+    return card;
+  }
+
+  /* ============================================================
+     ARMATEUR — vue flotte : progression des 5 équipages
+     sur les 6 compétences
+  ============================================================ */
+
+  function renderOwnerBoard() {
+    var card = document.createElement('div');
+    card.className = 'card';
+
+    var title = document.createElement('h2');
+    title.className = 'display';
+    title.style.margin = '0';
+    title.style.fontSize = '18px';
+    title.textContent = 'Ta flotte';
+
+    var sub = document.createElement('p');
+    sub.className = 'example-note';
+    sub.style.margin = '-8px 0 4px';
+    sub.textContent = "Position de chacun de tes 5 équipages sur les 6 compétences (une bouée par capitaine, un bateau par niveau de maîtrise). Exemple de démo pour 4 équipages sur 5.";
+
+    var legend = document.createElement('div');
+    legend.className = 'legend-row';
+    CAPTAINS.forEach(function (c) {
+      var item = document.createElement('span');
+      item.className = 'legend-item';
+      item.innerHTML = '<span class="legend-dot" style="background:' + c.color + '"></span>' + c.name;
+      legend.appendChild(item);
+    });
+
+    var blocksWrap = document.createElement('div');
+    blocksWrap.style.display = 'flex';
+    blocksWrap.style.flexDirection = 'column';
+    blocksWrap.style.gap = '24px';
+    blocksWrap.style.marginTop = '6px';
+
+    var positions = [0, 33.333, 66.667, 100];
+    var boatSizes = [14, 16, 19, 23];
+    var boatOpacity = [0.5, 0.68, 0.84, 1];
+    var levelShort = ['Débutant', 'Autonome', 'Confirmé', 'Expert'];
+
+    SKILLS.forEach(function (s) {
+      var block = document.createElement('div');
+      block.className = 'regatta-block';
+
+      var head = document.createElement('div');
+      head.className = 'regatta-head';
+      head.innerHTML = ICONS[s.icon] + '<strong>' + s.label + '</strong>';
+
+      var wrap = document.createElement('div');
+      wrap.className = 'regatta-track-wrap';
+
+      var boatsRow = document.createElement('div');
+      boatsRow.className = 'regatta-boats';
+      positions.forEach(function (p, i) {
+        var b = document.createElement('div');
+        b.className = 'regatta-boat';
+        var size = boatSizes[i];
+        b.style.left = p + '%';
+        b.style.width = size + 'px';
+        b.style.height = size + 'px';
+        b.style.opacity = boatOpacity[i];
+        b.innerHTML = ICONS.boat;
+        boatsRow.appendChild(b);
+      });
+
+      var line = document.createElement('div');
+      line.className = 'regatta-line';
+      positions.forEach(function (p) {
+        var t = document.createElement('div');
+        t.className = 'regatta-tick';
+        t.style.left = p + '%';
+        line.appendChild(t);
+      });
+
+      var buoyLayer = document.createElement('div');
+      buoyLayer.className = 'regatta-buoy-layer';
+      CAPTAINS.forEach(function (c, idx) {
+        var levels = captainLevels(c);
+        var v = Math.max(0, Math.min(3, levels[s.key]));
+        var pct = (v / 3) * 100;
+        var buoy = document.createElement('div');
+        buoy.className = 'regatta-buoy';
+        buoy.style.left = pct + '%';
+        buoy.style.top = (idx % 2 === 0 ? 11 : 25) + 'px';
+        buoy.style.background = c.color;
+        buoy.title = c.name + ' — ' + fmtLevel(v) + ' / 4';
+        buoy.textContent = initialsOf(c.name);
+        buoyLayer.appendChild(buoy);
+      });
+
+      var levelsRow = document.createElement('div');
+      levelsRow.className = 'regatta-levels';
+      levelShort.forEach(function (l) {
+        var span = document.createElement('span');
+        span.textContent = l;
+        levelsRow.appendChild(span);
+      });
+
+      wrap.appendChild(boatsRow);
+      wrap.appendChild(line);
+      wrap.appendChild(buoyLayer);
+      wrap.appendChild(levelsRow);
+
+      block.appendChild(head);
+      block.appendChild(wrap);
+      blocksWrap.appendChild(block);
+    });
+
+    card.appendChild(title);
+    card.appendChild(sub);
+    card.appendChild(legend);
+    card.appendChild(blocksWrap);
+    showCard(ownerStage, card);
+  }
+
+  /* ---------- confetti ---------- */
+  var canvas = document.getElementById('confetti');
+  var ctx = canvas.getContext('2d');
+  var particles = [];
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+  function resize() {
+    canvas.width = window.innerWidth * dpr;
+    canvas.height = window.innerHeight * dpr;
+    canvas.style.width = window.innerWidth + 'px';
+    canvas.style.height = window.innerHeight + 'px';
+  }
+  window.addEventListener('resize', resize);
+  resize();
+
+  var colors = ['#1B3A5C', '#00695C', '#C79A3D', '#6FA8DC'];
+
+  function burstConfetti() {
+    var cx = window.innerWidth / 2;
+    var cy = window.innerHeight / 2.6;
+    for (var i = 0; i < 60; i++) {
+      particles.push({
+        x: cx, y: cy,
+        vx: (Math.random() - 0.5) * 9,
+        vy: Math.random() * -7 - 2,
+        g: 0.25,
+        size: Math.random() * 5 + 3,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        rot: Math.random() * Math.PI,
+        vr: (Math.random() - 0.5) * 0.3,
+        life: 70
+      });
+    }
+  }
+
+  function tick() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.save();
+    ctx.scale(dpr, dpr);
+    particles.forEach(function (p) {
+      p.x += p.vx; p.y += p.vy; p.vy += p.g; p.rot += p.vr; p.life--;
+      ctx.save();
+      ctx.translate(p.x, p.y);
+      ctx.rotate(p.rot);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = Math.max(p.life / 70, 0);
+      ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
+      ctx.restore();
+    });
+    particles = particles.filter(function (p) { return p.life > 0; });
+    ctx.restore();
+    requestAnimationFrame(tick);
+  }
+  if (!reduceMotion) requestAnimationFrame(tick);
+
+  // Amorce l'écran par défaut (Vue délégué), une fois CAPTAINS/SITUATIONS
+  // chargés plus haut dans ce script.
+  renderDelegatePicker();
+})();
+</script>
